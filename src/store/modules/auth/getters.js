@@ -9,3 +9,11 @@ export const auth = (state) => {
 export const data = (state) => {
   return state.user.data
 }
+
+export const tasks = (state) => {
+  return state.user.tasks
+}
+
+export const token = (state) => {
+  return state.user.token
+}

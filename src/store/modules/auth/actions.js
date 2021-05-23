@@ -1,7 +1,6 @@
 import axios from 'axios';
 import router from '../../../router'
-import useVuelidate from '@vuelidate/core'
-import { required, email, minLength } from '@vuelidate/validators'
+
 
 export const login = ({commit}, form) => {
   axios("http://127.0.0.1:8000/api/auth/login", {
@@ -24,7 +23,7 @@ export const login = ({commit}, form) => {
         created_at: response.data.created_at
       }
       commit('data', user)
-      router.push({ name: `Home` })
+      router.push({ path: `/` })
     })
     .catch(error => {
       console.log(error)
@@ -52,9 +51,26 @@ export const register = ({commit}, form) => {
       created_at: response.data.created_at
     }
     commit('data', user)
-    router.push({ name: `Home` })
+    router.push({ path: `/` })
   })
   .catch(error => {
     console.log(error)
+  });
+}
+export const tasks = ({getters, commit}) => {
+  axios("http://127.0.0.1:8000/api/tasks",{
+    method: 'GET',
+    headers: {
+      'Authorization': `Bearer ${getters.token}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    })
+    .then((response)=> {
+      commit('tasks', response.data.tasks)
+      console.log(response)
+    })
+    .catch(error => {
+      console.log(error)
   });
 }

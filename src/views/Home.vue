@@ -8,9 +8,9 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>id</td>
-                <td>content</td>
+            <tr v-for="task in tasks" :key="task">
+                <td>{{ task.id }}</td>
+                <td>{{ task.body }}</td>
             </tr>
         </tbody>
       </table>
@@ -20,28 +20,20 @@
 
 <script>
 // @ is an alias to /src
-import axios from 'axios';
+import { mapActions } from "vuex"
 
 export default {
   name: 'Home',
-  methods: {
-    getTasks(){
-        axios("http://127.0.0.1:8000/api/tasks")
-        .then((response)=> {
-          console.log(response)
-        })
-        .catch(error => {
-          console.log(error)
-      });
-    }
+  data() {
+    return {};
   },
-  mounted(){
-    this.getTasks();
+  computed: {
+    ...mapActions({'tasks': 'auth/tasks'})
   }
 
 }
 </script>
-<style lang="scss" scoped>
+<style scoped>
   table,
   td {
       border: 1px solid #333;
