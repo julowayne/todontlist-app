@@ -41,7 +41,7 @@ export default {
 
 }
 </script>
-<style scoped>
+<style lang="scss" scoped>
   table,
   td {
       border: 1px solid #333;

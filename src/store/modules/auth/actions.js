@@ -1,5 +1,7 @@
 import axios from 'axios';
 import router from '../../../router'
+import useVuelidate from '@vuelidate/core'
+import { required, email, minLength } from '@vuelidate/validators'
 
 export const login = ({commit}, form) => {
   axios("http://127.0.0.1:8000/api/auth/login", {
