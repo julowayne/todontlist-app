@@ -30,6 +30,24 @@ export const login = ({commit}, form) => {
   });
 }
 
+export const logout = ({getters}) => {
+  axios("http://127.0.0.1:8000/api/auth/logout", {
+    method: 'POST',
+    headers: {
+    'Authorization': `Bearer ${getters.token}`,
+    'Accept': 'application/json',
+    'Content-Type': 'application/json',
+  }
+  })
+  .then((response)=> {
+    console.log(response)
+    router.push({ path: `/login` })
+  })
+  .catch(error => {
+    console.log(error)
+  });
+}
+
 export const register = ({commit}, form) => {
     axios("http://127.0.0.1:8000/api/auth/register", {
       method: 'POST',

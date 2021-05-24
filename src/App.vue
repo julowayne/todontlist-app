@@ -11,24 +11,25 @@
 </template>
 <script>
 import axios from 'axios'
-import { mapGetters } from "vuex"
+import { mapActions, mapGetters } from "vuex"
   export default {
     methods: {
-      logout(){
-        axios("http://127.0.0.1:8000/api/auth/logout", {
-          method: 'POST',
-          headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-        }
-      })
-      .then((response)=> {
-        console.log(response)
-      })
-      .catch(error => {
-        console.log(error)
-    });
-      }
+      ...mapActions({'logout': 'auth/logout'}),
+    //   logout(){
+    //     axios("http://127.0.0.1:8000/api/auth/logout", {
+    //       method: 'POST',
+    //       headers: {
+    //       'Accept': 'application/json',
+    //       'Content-Type': 'application/json',
+    //     }
+    //   })
+    //   .then((response)=> {
+    //     console.log(response)
+    //   })
+    //   .catch(error => {
+    //     console.log(error)
+    // });
+    // }
     },
     computed: {
       ...mapGetters({'data': 'auth/data'})
