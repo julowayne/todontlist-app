@@ -45,7 +45,13 @@ import { mapActions, mapGetters } from "vuex"
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background-color: #e9ecef;
+  min-height: 100vh;
 }
+body {
+  margin: 0;
+}
+
 
 #nav {
   padding: 30px;
@@ -55,6 +61,7 @@ import { mapActions, mapGetters } from "vuex"
   font-weight: bold;
   color: #2c3e50;
   margin-left: 15px;
+  text-decoration: none;
 }
 
 

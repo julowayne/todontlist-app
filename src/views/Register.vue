@@ -1,11 +1,7 @@
 <template>
   <div>
-    <form method="post" @submit.prevent="register(form)">
-
-        <!-- <div v-if="error">
-            {{error.message}}
-        </div> -->
-        <h3>Bienvenue</h3>
+    <form method="post" @submit.prevent="register(form)" class="register">
+        <h4>Bienvenue</h4>
           <label for="name">Name</label>
           <input type="text" name="name" id="name" v-model="form.name">
           <div v-if="errors.name.length > 0">
@@ -50,7 +46,7 @@
           </div>
         </div> -->
         <div>
-          <button type="submit" @click="formValidation">
+          <button type="submit" @click="formValidation" id="registerme">
             créer mon compte
           </button>
         </div>
@@ -128,8 +124,21 @@ export default {
 </script>
 
 <style>
-    body {
-        background-color: #e9ecef;
-    }
+  body {
+      background-color: #e9ecef;
+  }
+  .register {
+    padding: 1rem 1.5rem;
+    background-color: #f8f9fa;
+    max-width: 20%;
+    border-radius: 4px;
+    box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+  }
+  #registerme {
+    width: 100%;
+  }
 
 </style>

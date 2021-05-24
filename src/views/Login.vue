@@ -1,12 +1,11 @@
 <template>
   <div>
-    <form method="post" @submit.prevent="login(form)">
-
-      <label for="email">Email</label>
-      <input type="email" name="email" id="email" v-model="form.email">
-
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" v-model="form.password">
+    <form method="post" @submit.prevent="login(form)"  class="login">
+      <h4>M'indentifier</h4>
+        <label for="email">Email</label>
+        <input type="email" name="email" id="email" v-model="form.email"> 
+        <label for="password">Password</label>
+        <input type="password" name="password" id="password" v-model="form.password">
       <!-- <div>
         <label for="email">Email</label>
         <input type="email"  :class="{'is-invalid': v$.form.email.$error}" id="email" v-model="form.email" />
@@ -21,8 +20,7 @@
           <span v-for="error in v$.form.password.$errors" :key="error"> {{ error.$message }}</span>
         </div>
       </div> -->
-
-      <button type="submit">Login</button>
+      <button type="submit" id="logme">Me connecter</button>
     </form>
   </div>
 </template>
@@ -64,6 +62,31 @@ export default {
   }
 </script>
 
-<style scoped>
+<style>
+.login {
+  padding: 1rem 1.5rem;
+  background-color: #f8f9fa;
+  max-width: 20%;
+  border-radius: 4px;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+}
+#logme {
+  width: 50%;
+}
+label {
+  text-align: left;
+  margin-bottom: 5px;
+}
+input {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075)!important;
+}
+label + input {
+  margin-bottom: 10px;
+}
 
 </style>

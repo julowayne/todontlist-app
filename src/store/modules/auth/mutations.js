@@ -11,5 +11,14 @@ export const tasks = (state, tasks) => {
 }
 
 export const addTask = (state, task) => {
-  state.user.task.unshift(task)
+  state.user.tasks.unshift(task)
 }
+
+// export const deleteTask = (state, task) => {
+//   // state.user.task.
+//   state.user.tasks.forEach(e, index => {
+//     if(e.id == ){
+//       return state.user.tasks.splice(task, 1)
+//     }
+//   });
+// }

@@ -115,3 +115,20 @@ export const addTask = ({getters, commit}, task) => {
   });
 }
 
+// export const deleteTask = ({getters, commit}, id) => {
+//   axios(`http://127.0.0.1:8000/api/tasks/${id}`,{
+//     method: 'DELETE',
+//     headers: {
+//       'Authorization': `Bearer ${getters.token}`,
+//       'Accept': 'application/json',
+//       'Content-Type': 'application/json'
+//     },
+//     })
+//     .then((response)=> {
+//       commit('deleteTask', id)
+//       console.log(response)
+//     })
+//     .catch(error => {
+//       console.log(error)
+//   });
+// }
