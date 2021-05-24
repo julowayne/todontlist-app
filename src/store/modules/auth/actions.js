@@ -74,3 +74,26 @@ export const tasks = ({getters, commit}) => {
       console.log(error)
   });
 }
+
+export const addTask = ({getters, commit}, task) => {
+  axios("http://127.0.0.1:8000/api/tasks",{
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${getters.token}`,
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    data: {
+      body: task.content,
+      done: task.done
+    } 
+    })
+    .then((response)=> {
+      commit('addTask', response.data.tasks)
+      console.log(response)
+    })
+    .catch(error => {
+      console.log(error)
+  });
+}
+
