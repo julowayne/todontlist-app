@@ -67,8 +67,8 @@ export const tasks = ({getters, commit}) => {
     },
     })
     .then((response)=> {
-      commit('tasks', response.data.tasks)
       console.log(response)
+      commit('tasks', response.data.tasks)
     })
     .catch(error => {
       console.log(error)

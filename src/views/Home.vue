@@ -1,36 +1,45 @@
 <template>
   <div class="home">
-    <div>
+    <div v-if="Object.keys(data).length != 0">
       <table>
         <thead>
-            <tr>
-                <th colspan="2">All tasks</th>
-            </tr>
+          <tr>
+            <th colspan="3">All tasks</th>
+          </tr>
         </thead>
-        <tbody>
-            <tr v-for="task in tasks" :key="task">
-                <td>{{ task.id }}</td>
-                <td>{{ task.body }}</td>
-            </tr>
+        <tbody v-if="Object.keys(data).length != 0">
+          <tr v-for="task in tasks" :key="task">
+              <td>{{ task.id }}</td>
+              <td>{{ task.body }}</td>
+              <td><a href="">modifier</a> | <a href="">supprimer</a></td>
+          </tr>
         </tbody>
       </table>
     </div>
+    <div v-else>Vous devez vous connecter/inscrire pour avoir accès aux tâches</div>
+
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import { mapActions } from "vuex"
+import { mapGetters } from "vuex"
 
 export default {
   name: 'Home',
-  data() {
-    return {};
+  methods: {
+    // ...mapActions({'tasks': 'auth/tasks'})
   },
   computed: {
-    ...mapActions({'tasks': 'auth/tasks'})
+    ...mapGetters({'data': 'auth/data'}),
+    tasks(){
+      // this.$store.dispatch('auth/tasks')
+        return this.$store.getters['auth/tasks']
+    },
+  },
+  created: function(){
+    this.$store.dispatch('auth/tasks')
   }
-
 }
 </script>
 <style scoped>
